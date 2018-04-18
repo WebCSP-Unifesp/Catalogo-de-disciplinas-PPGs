@@ -404,7 +404,9 @@ if(
                     
 			// process inline
 			$myUser = JFactory::getUser();
-							
+			$groups = JAccess::getGroupsByUser($myUser->id, false);
+			echo "<input type='hidden' id='grupo' name='grupo' value=".$groups[0].">";
+			
 			$database->setQuery("select id from #__users where lower(username)=lower('".$myUser->get('username','')."')");
 			$id = $database->loadResult();
 			if ($id) $myUser->get('id',-1);
