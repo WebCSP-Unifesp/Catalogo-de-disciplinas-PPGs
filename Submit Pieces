@@ -1,0 +1,55 @@
+**BREEZING FORMS - SUBMIT PIECES**
+
+$this->execPieceByName('ff_InitLib');
+$from ='';
+$fromname = 'Saúde Coletiva';
+$recipient_responsavel = ff_getSubmit('email');
+$recipient_ppg = 'emailppg@email.br';
+$recipient_coordenacao = 'emailcoordena@email.br';
+$all = array ($recipient_responsavel, $recipient_ppg);
+
+$body1 = "Prezado(a), ";
+$body1 .= "\r\n";
+$body1 .= "A seguinte proposta de disciplina foi submetida e está PENDENTE para análise: ";
+$body1 .= ff_getSubmit('nome');
+$body1 .= "\r\n";
+$body1 .= "Acesse: http://saudecoletiva.sites.unifesp.br/disciplinas/proposta";
+
+
+$body2 = "Prezado(a), ";
+$body2 .= "\r\n";
+$body2 .= "A seguinte proposta de disciplina foi APROVADA: ";
+$body2 .= ff_getSubmit('nome');
+$body2 .= "\r\n";
+$body2 .= "Acesse: http://saudecoletiva.sites.unifesp.br/disciplinas/proposta";
+
+
+$body3 = "Prezado(a), ";
+$body3 .= "\r\n";
+$body3 .= "A situação da seguinte disciplina foi atualizada: ";
+$body3 .= ff_getSubmit('nome');
+$body3 .= "\r\n";
+$body3 .= "Situação: NECESSITA ADEQUAR";
+$body3 .= "\r\n";
+$body3 .= "Acesse: http://saudecoletiva.sites.unifesp.br/disciplinas/proposta";
+
+
+
+$groupid =  ff_getSubmit('groupid');
+
+
+if(ff_getSubmit('groupid') == 10){
+$this->sendMail($from, $fromname, $recipient_ppg, 'Você tem uma nova proposta de disciplina para analisar', $body1);
+}
+
+if(ff_getSubmit('groupid') == 11){
+$this->sendMail($from, $fromname, $recipient_coordenacao, 'Você tem uma nova proposta de disciplina para analisar', $body1);
+}
+
+if((ff_getSubmit('check_decisao_coordenacao') == "aprovado") && (ff_getSubmit('groupid') == 12)) {
+$this->sendMail($from, $fromname, $all, 'Proposta de disciplina - APROVADO', $body2);
+}
+if((ff_getSubmit('check_decisao_coordenacao') == "necessita de adequações") && (ff_getSubmit('groupid') == 12)) {
+$this->sendMail($from, $fromname, $recipient_responsavel, 'Proposta de disciplina - NECESSITA ADEQUAR', $body3);
+}
+else{}
