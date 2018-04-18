@@ -1,0 +1,84 @@
+*** ActionScript (para realizar os calculos em fields - a cada 15 horas = 1 crédito): ***
+
+- campo carga teorica
+
+function ff_carga1_action(element, action)
+{
+ff_getElementByName('carga_horaria_total').value =
+Number(ff_getElementByName('carga1').value) +
+Number(ff_getElementByName('carga2').value);
+
+if (ff_getElementByName('carga_horaria_total').value < 15){
+ff_getElementByName('creditos2').value = 0;
+}else{
+ff_getElementByName('creditos2').value =
+Math.round(Number(ff_getElementByName('carga_horaria_total').value) /
+15);
+}
+}
+// ff_carga1_action
+
+
+======================
+- campo carga pratica
+
+function ff_carga2_action(element, action)
+{
+ff_getElementByName('carga_horaria_total').value =
+Number(ff_getElementByName('carga1').value) +
+Number(ff_getElementByName('carga2').value);
+
+if (ff_getElementByName('carga_horaria_total').value < 15){
+ff_getElementByName('creditos2').value = 0;
+}else{
+ff_getElementByName('creditos2').value =
+Math.round(Number(ff_getElementByName('carga_horaria_total').value) /
+15);
+}
+}
+// ff_carga2_action
+
+===========================
+- campo carga total
+
+function ff_carga_horaria_total_action(element,action)
+{
+ff_getElementByName('carga_horaria_total').value = 0;
+{
+ff_getElementByName('carga_horaria_total').value =
+Number(ff_getElementByName('carga1').value) +
+Number(ff_getElementByName('carga2').value);
+
+if (ff_getElementByName('carga_horaria_total').value < 15){
+ff_getElementByName('creditos2').value = 0;
+}else{
+ff_getElementByName('creditos2').value =
+Math.round(Number(ff_getElementByName('carga_horaria_total').value) /
+15);
+}
+}
+}
+// ff_carga_horaria_total_action
+
+
+
+
+===========================
+- campo creditos
+
+function ff_creditos2_action(element,action)
+{
+ff_getElementByName('creditos2').value = 0;
+{
+if(ff_getElementByName('carga_horaria_total').value < 15){
+ff_getElementByName('creditos2').value = 0;
+}else{
+ff_getElementByName('creditos2').value =
+Math.round(Number(ff_getElementByName('carga_horaria_total').value) /
+15);
+}
+}
+}
+// ff_creditos2_action
+
+
