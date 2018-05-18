@@ -13,3 +13,4 @@ Formulário manipulado por grupos de usuários específicos em cada etapa.
 - Criada uma view (no content builder) para o grupo de usuário: user1
 - Criada uma view (no content builder) para o grupo de usuário: Público
 
+* Alteração solicitada por usuário:  criado acesso único para user2 e user3.
