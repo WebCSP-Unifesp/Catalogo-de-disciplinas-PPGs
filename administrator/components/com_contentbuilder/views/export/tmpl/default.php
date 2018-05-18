@@ -28,6 +28,11 @@ header("Pragma: no-cache");
         foreach($item As $key => $value){
             if($key != 'colRecord' && in_array(str_replace('col','',$key), $this->data->visible_cols)){             
                   $value = str_replace(';', ',' , $value);
+                  $value = str_replace("\n", "," , $value);
+                  $value = str_replace("\r", "" , $value);
+
+
+                 
                   echo trim(utf8_decode($value)).';';         
             }            
         }
